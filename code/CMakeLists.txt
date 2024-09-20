@@ -1,0 +1,31 @@
+# main
+
+cmake_minimum_required(VERSION 3.20 FATAL_ERROR)
+
+set(PROJECTNAME lutf)
+
+project(${PROJECTNAME} LANGUAGES C CXX)
+
+set(CMAKE_CXX_STANDARD 23)
+set(CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} /W4")
+set(CMAKE_MFC_FLAG 1)
+set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
+add_compile_definitions(${PROJECTNAME} PUBLIC
+	UNICODE
+	_UNICODE
+	)
+
+
+	
+add_executable(${PROJECTNAME}
+	main.cpp
+	utils.hpp
+	)
+	
+set_property(DIRECTORY PROPERTY VS_STARTUP_PROJECT ${PROJECTNAME})
+	
+	
+target_compile_options(${PROJECT_NAME} PRIVATE
+	"-D_SILENCE_CXX23_ALIGNED_STORAGE_DEPRECATION_WARNING"
+	"-D_CRT_SECURE_NO_WARNINGS"
+	"-W3")	
