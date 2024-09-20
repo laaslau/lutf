@@ -13,7 +13,7 @@ std::string trim(const std::string& str)
 
 auto split(const auto& data, const auto delim)
 {
-	auto splitView = data | std::views::split(delim) /*| std::views::filter([](const auto& word) {return !word.empty(); })*/;
+	auto splitView = data | std::views::split(delim) | std::views::filter([](const auto& word) {return !word.empty(); });
 	std::vector<std::string> result;
 	for (const auto& v : splitView)
 	{
